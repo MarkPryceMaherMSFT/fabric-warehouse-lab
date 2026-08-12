@@ -31,14 +31,19 @@
 
 -- MARKDOWN ********************
 
+-- # Fabric Warehouse Demo Labs
+-- 
+-- This lab walks through TPC-H data loading, monitoring/tuning, the SQL analytics endpoint, and warehouse security features in a Fabric Warehouse.
+-- 
+-- **Objective:** load TPC-H sample data into Warehouse tables, then explore query performance tuning, snapshots/time travel/clones, custom SQL pools, and SQL audit logging.
+-- 
 -- # Getting started
 -- 
 -- Before you begin:
 -- 
--- 1. Change the workspace collation setting to case insensitive. While not required, this will help ensure a more smooth experience. 
--- 1. From the workspace item view, select **New** from the top left corner of the screen and create a new warehouse. 
--- 1. _If necessary:_ From the ribbon of this notebook, change the runtime to use T-SQL by selecting the **PySpark (Python)** dropdown menu and selecting the **T-SQL** runtime under the **T-SQL Analytics** section. 
--- 1. Using the explorer pane on the left side of the screen select **Add data items** and use the OneLake catalog to add the warehouse created in step 2 above. 
+-- 1. **Run the `1_generate_data` notebook in this workspace first.** It generates a 1 GB TPC-H dataset into this Lakehouse's `Files/tpch_sf1` folder — the cells below load their tables from that data.
+-- 1. Change the workspace collation setting to case insensitive. While not required, this will help ensure a more smooth experience.
+-- 1. _If necessary:_ From the ribbon of this notebook, change the runtime to use T-SQL by selecting the **PySpark (Python)** dropdown menu and selecting the **T-SQL** runtime under the **T-SQL Analytics** section.
 
 -- MARKDOWN ********************
 
@@ -268,19 +273,6 @@ CREATE TABLE dbo.supplier
         s_comment           VARCHAR(101)    NOT NULL
     );
 
-/*
-COPY INTO dbo.lineitem_clustered        FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered - COPY INTO');
-COPY INTO dbo.lineitem_clustered_bad    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered_bad - COPY INTO');
-COPY INTO dbo.customer                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/customer/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - customer - COPY INTO');
-COPY INTO dbo.nation                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/nation/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - nation - COPY INTO');
-COPY INTO dbo.orders                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/orders/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - orders - COPY INTO');
-COPY INTO dbo.part                      FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/part/*.parquet'       WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - part - COPY INTO');
-COPY INTO dbo.partsupp                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/partsupp/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - partsupp - COPY INTO');
-COPY INTO dbo.region                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/region/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - region - COPY INTO');
-COPY INTO dbo.supplier                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/supplier/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - supplier - COPY INTO');
-*/
-
-
 declare @path varchar(500)
 declare @ssql varchar(max)
 declare @tablename varchar(50)
@@ -382,126 +374,6 @@ order by
 option (label = 'Lab Prep Query - Clustering: Enabled - Bad');
 
 
-DECLARE @loops_to_run INT = 4
-DECLARE @loop INT = 1
-
-WHILE @loop <= @loops_to_run
-BEGIN
-
-    select
-        l_returnflag,
-        l_linestatus,
-        sum(l_quantity) as sum_qty,
-        sum(l_extendedprice) as sum_base_price,
-        sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-        sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-        avg(l_quantity) as avg_qty,
-        avg(l_extendedprice) as avg_price,
-        avg(l_discount) as avg_disc,
-    count_big(*) as count_order /* count(*) as count_order */
-    from
-        MyLakehouse.dbo.[lineitem_100_000010000]
-    where
-        l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
-    group by
-        l_returnflag,
-        l_linestatus
-    order by
-        l_returnflag,
-        l_linestatus
-    option (label = 'Lakehouse Optimization - lineitem_100_000010000');
-    select
-        l_returnflag,
-        l_linestatus,
-        sum(l_quantity) as sum_qty,
-        sum(l_extendedprice) as sum_base_price,
-        sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-        sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-        avg(l_quantity) as avg_qty,
-        avg(l_extendedprice) as avg_price,
-        avg(l_discount) as avg_disc,
-    count_big(*) as count_order /* count(*) as count_order */
-    from
-        MyLakehouse.dbo.[lineitem_100_000050000]
-    where
-        l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
-    group by
-        l_returnflag,
-        l_linestatus
-    order by
-        l_returnflag,
-        l_linestatus
-    option (label = 'Lakehouse Optimization - lineitem_100_000050000');
-    select
-        l_returnflag,
-        l_linestatus,
-        sum(l_quantity) as sum_qty,
-        sum(l_extendedprice) as sum_base_price,
-        sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-        sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-        avg(l_quantity) as avg_qty,
-        avg(l_extendedprice) as avg_price,
-        avg(l_discount) as avg_disc,
-    count_big(*) as count_order /* count(*) as count_order */
-    from
-        MyLakehouse.dbo.[lineitem_100_002000000]
-    where
-        l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
-    group by
-        l_returnflag,
-        l_linestatus
-    order by
-        l_returnflag,
-        l_linestatus
-    option (label = 'Lakehouse Optimization - lineitem_100_002000000');
-    select
-        l_returnflag,
-        l_linestatus,
-        sum(l_quantity) as sum_qty,
-        sum(l_extendedprice) as sum_base_price,
-        sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-        sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-        avg(l_quantity) as avg_qty,
-        avg(l_extendedprice) as avg_price,
-        avg(l_discount) as avg_disc,
-    count_big(*) as count_order /* count(*) as count_order */
-    from
-        MyLakehouse.dbo.[lineitem_100_010000000]
-    where
-        l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
-    group by
-        l_returnflag,
-        l_linestatus
-    order by
-        l_returnflag,
-        l_linestatus
-    option (label = 'Lakehouse Optimization - lineitem_100_010000000');
-    select
-        l_returnflag,
-        l_linestatus,
-        sum(l_quantity) as sum_qty,
-        sum(l_extendedprice) as sum_base_price,
-        sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
-        sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
-        avg(l_quantity) as avg_qty,
-        avg(l_extendedprice) as avg_price,
-        avg(l_discount) as avg_disc,
-    count_big(*) as count_order /* count(*) as count_order */
-    from
-        MyLakehouse.dbo.[lineitem_100_default]
-    where
-        l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
-    group by
-        l_returnflag,
-        l_linestatus
-    order by
-        l_returnflag,
-        l_linestatus
-    option (label = 'Lakehouse Optimization - lineitem_100_default');
-
-SET @Loop = @Loop + 1
-END
-
 -- METADATA ********************
 
 -- META {
@@ -516,7 +388,7 @@ END
 -- CELL ********************
 
 TRUNCATE TABLE dbo.lineitem;
-COPY INTO dbo.lineitem FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet' WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem - COPY INTO');
+COPY INTO dbo.lineitem FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet' WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem - COPY INTO');
 
 -- METADATA ********************
 
@@ -547,7 +419,7 @@ TRUNCATE TABLE dbo.lineitem_openrowset;
 INSERT INTO dbo.lineitem_openrowset
 SELECT
     *
-FROM OPENROWSET(BULK 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet')
+FROM OPENROWSET(BULK 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet')
 OPTION (LABEL = 'Load - lineitem - OPENROWSET');
 
 -- METADATA ********************
@@ -1315,7 +1187,7 @@ tenant_id = spark.conf.get('trident.tenant.id')
 # Build the server name for the warehouse/sql endpoint
 sql_endpoint=f'''{base64.b32encode(uuid.UUID(tenant_id).bytes_le).decode("utf-8").lower().strip("=")}-{base64.b32encode(uuid.UUID(workspace_id).bytes_le).decode("utf-8").lower().strip("=")}.datawarehouse.fabric.microsoft.com'''
 
-warehouse_name='MyWarehouse'
+warehouse_name='demowarehouse'
 
 token = mssparkutils.credentials.getToken("pbi")
 
@@ -1895,89 +1767,6 @@ else:
 -- MARKDOWN ********************
 
 -- Before proceeding, be sure to change the kernel to **T-SQL Analytics** -> **T-SQL** on the ribbon.
-
--- MARKDOWN ********************
-
--- #### 🎯 Optimizing lake file sizes
-
--- CELL ********************
-
-SELECT
-    COUNT(*) AS run_count,
-    FORMAT(
-        CASE
-            WHEN CHARINDEX('default', label, 0) > 0 THEN 0
-            ELSE CONVERT(INT, SUBSTRING(label, 39, 9))
-        END, '#,###'
-    ) AS rows_per_file,
-    label,
-    FORMAT(AVG(DATEDIFF(MILLISECOND, start_time, end_time))/1000., '#,###.#') AS avg_runtime,
-    FORMAT(MIN(DATEDIFF(MILLISECOND, start_time, end_time))/1000., '#,###.#') AS min_runtime,
-    FORMAT(MAX(DATEDIFF(MILLISECOND, start_time, end_time))/1000., '#,###.#') AS max_runtime,
-    AVG(data_scanned_remote_storage_mb + data_scanned_memory_mb + data_scanned_disk_mb) AS avg_data_scanned,
-    FORMAT(AVG(allocated_cpu_time_ms), '#,###') AS avg_cpu_time_ms
-FROM day_01_lakehouse.queryinsights.exec_requests_history
--- WHERE 
---     label IN ('Lakehouse Optimization - lineitem_100_000010000', 'Lakehouse Optimization - lineitem_100_000050000')    
-GROUP BY label
-ORDER BY AVG(DATEDIFF(MILLISECOND, start_time, end_time))/1000.
-
--- METADATA ********************
-
--- META {
--- META   "language": "sql",
--- META   "language_group": "sqldatawarehouse"
--- META }
-
--- MARKDOWN ********************
-
--- **How do optimize file sizes**
--- 
--- These limits can be set before writing data or before running an OPTIMIZE command to improve performance of existing tables written with sub-optimal file sizes. 
--- 
--- ```python
---     from delta.tables import DeltaTable
--- 
---     # Set the maximum number of records per file to 2 million rows during writes.
---     spark.conf.set("spark.sql.files.maxRecordsPerFile", 2000000)
--- 
---     # Set the maximum file size to approximately 4GB
---     spark.conf.set("spark.databricks.delta.optimize.maxFileSize", 400 * 1024 * 1024 * 1024)
--- 
---     # Run OPTIMIZE on existing tables.
---     spark.sql("OPTIMIZE myTable")
--- ```
--- 
--- Now, compare the optimized table performance to the non-optimized. 
-
--- CELL ********************
-
-SELECT
-    COUNT(*) AS run_count,
-    FORMAT(
-        CASE
-            WHEN CHARINDEX('default', label, 0) > 0 THEN 0
-            ELSE CONVERT(INT, SUBSTRING(label, 39, 9))
-        END, '#,###'
-    ) AS rows_per_file,
-    label,
-    FORMAT(AVG(DATEDIFF(MILLISECOND, start_time, end_time))/1000., '#,###.#') AS avg_runtime,
-    FORMAT(MIN(DATEDIFF(MILLISECOND, start_time, end_time))/1000., '#,###.#') AS min_runtime,
-    FORMAT(MAX(DATEDIFF(MILLISECOND, start_time, end_time))/1000., '#,###.#') AS max_runtime,
-    AVG(data_scanned_remote_storage_mb + data_scanned_memory_mb + data_scanned_disk_mb) AS avg_data_scanned,
-    FORMAT(AVG(allocated_cpu_time_ms), '#,###') AS avg_cpu_time_ms
-FROM day_01_lakehouse.queryinsights.exec_requests_history
-WHERE 
-    label IN ('Lakehouse Optimization - lineitem_100_000010000', 'Lakehouse Optimization - lineitem_100_000050000', 'Lakehouse Optimization - lineitem_100_default', 'Lakehouse Optimization - lineitem_100_002000000', 'Lakehouse Optimization - lineitem_100_010000000')
-GROUP BY label
-ORDER BY AVG(DATEDIFF(MILLISECOND, start_time, end_time))/1000.
-
--- METADATA ********************
-
--- META {
--- META   "language": "sql",
--- META   "language_group": "sqldatawarehouse"
--- META }
 
 -- MARKDOWN ********************
 

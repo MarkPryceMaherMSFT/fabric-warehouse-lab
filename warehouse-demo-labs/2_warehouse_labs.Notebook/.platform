@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "Warehouse Labs",
-    "description": "New notebook"
+    "displayName": "2_warehouse_labs",
+    "description": "Fabric Warehouse Demo Labs: TPC-H data loading, monitoring/tuning, SQL analytics endpoint, and security walkthroughs."
   },
   "config": {
     "version": "2.0",

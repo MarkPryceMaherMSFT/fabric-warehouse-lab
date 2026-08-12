@@ -1,0 +1,36 @@
+find_replace:
+  # --- 1_generate_data.Notebook ---
+  # Dev workspace ID (used in the METADATA lakehouse dependency block) -> deployment target workspace ID
+  - find_value: 0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc
+    replace_value:
+      _ALL_: "$workspace.$id" # workspace ID (dynamic)
+    item_type: "Notebook"
+    item_name: ["1_generate_data"]
+  # Dev lakehouse GUID (default_lakehouse + known_lakehouses) -> deployed demolakehouse GUID
+  - find_value: 023336ad-ad68-40ff-b90a-063128753fb0
+    replace_value:
+      _ALL_: "$items.Lakehouse.demolakehouse.$id" # lakehouse GUID (dynamic)
+    item_type: "Notebook"
+    item_name: ["1_generate_data"]
+
+  # --- 2_warehouse_labs.Notebook ---
+  # Dev workspace ID: covers the METADATA lakehouse dependency block AND every raw
+  # onelake.dfs.fabric.microsoft.com/{workspace_id}/{lakehouse_id}/Files/... path embedded
+  # in the SQL cells (Lab setup's @path variable, and the Data ingestion COPY INTO/OPENROWSET cells).
+  - find_value: 0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc
+    replace_value:
+      _ALL_: "$workspace.$id" # workspace ID (dynamic)
+    item_type: "Notebook"
+    item_name: ["2_warehouse_labs"]
+  # Dev lakehouse GUID: covers default_lakehouse, known_lakehouses, and the same raw OneLake paths above.
+  - find_value: 023336ad-ad68-40ff-b90a-063128753fb0
+    replace_value:
+      _ALL_: "$items.Lakehouse.demolakehouse.$id" # lakehouse GUID (dynamic)
+    item_type: "Notebook"
+    item_name: ["2_warehouse_labs"]
+  # Dev warehouse GUID (default_warehouse + known_warehouses) -> deployed demowarehouse GUID
+  - find_value: b9e4f7ae-a6a9-8dcd-4856-d0aa8df7e81a
+    replace_value:
+      _ALL_: "$items.Warehouse.demowarehouse.$id" # warehouse GUID (dynamic)
+    item_type: "Notebook"
+    item_name: ["2_warehouse_labs"]

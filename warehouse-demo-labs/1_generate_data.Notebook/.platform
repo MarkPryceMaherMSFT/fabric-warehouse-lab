@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "generate data",
-    "description": "New notebook"
+    "displayName": "1_generate_data",
+    "description": "Generates TPC-H sample data into the Lakehouse's Files area for the Warehouse Labs notebook to load."
   },
   "config": {
     "version": "2.0",
