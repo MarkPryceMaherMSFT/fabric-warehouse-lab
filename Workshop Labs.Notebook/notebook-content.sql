@@ -7,16 +7,6 @@
 -- META     "name": "sqldatawarehouse"
 -- META   },
 -- META   "dependencies": {
--- META     "lakehouse": {
--- META       "default_lakehouse": "023336ad-ad68-40ff-b90a-063128753fb0",
--- META       "default_lakehouse_name": "demolakehouse",
--- META       "default_lakehouse_workspace_id": "0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc",
--- META       "known_lakehouses": [
--- META         {
--- META           "id": "023336ad-ad68-40ff-b90a-063128753fb0"
--- META         }
--- META       ]
--- META     },
 -- META     "warehouse": {
 -- META       "default_warehouse": "b9e4f7ae-a6a9-8dcd-4856-d0aa8df7e81a",
 -- META       "known_warehouses": [
@@ -268,7 +258,7 @@ CREATE TABLE dbo.supplier
         s_comment           VARCHAR(101)    NOT NULL
     );
 
-/*
+
 COPY INTO dbo.lineitem_clustered        FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered - COPY INTO');
 COPY INTO dbo.lineitem_clustered_bad    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered_bad - COPY INTO');
 COPY INTO dbo.customer                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/customer/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - customer - COPY INTO');
@@ -278,58 +268,6 @@ COPY INTO dbo.part                      FROM 'https://scbradlstorage01.dfs.core.
 COPY INTO dbo.partsupp                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/partsupp/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - partsupp - COPY INTO');
 COPY INTO dbo.region                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/region/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - region - COPY INTO');
 COPY INTO dbo.supplier                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/supplier/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - supplier - COPY INTO');
-*/
-
-
-declare @path varchar(500)
-declare @ssql varchar(max)
-declare @tablename varchar(50)
-declare @datasize varchar(50)
-
--- You need to generate the data using the notebook 'generate data'
-set @datasize = 'tpch_sf1'
-
-set @path ='https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/' + @datasize + '/'
-
-set @tablename = 'customer'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'nation'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'orders'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'part'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'partsupp'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'region'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'supplier'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'lineitem'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  @tablename + '/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'lineitem_clustered'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  'lineitem/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
-
-set @tablename = 'lineitem_clustered_bad'
-set @ssql = 'COPY INTO dbo.' + @tablename + '   FROM ''' + @path +  'lineitem/*.parquet''   WITH (FILE_TYPE = ''PARQUET'') OPTION (LABEL = ''Load - ' + @tablename + ' - COPY INTO'')'
-exec (@ssql)
 
 
 select top 10
