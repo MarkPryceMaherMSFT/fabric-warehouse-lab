@@ -259,13 +259,13 @@ CREATE TABLE dbo.supplier
         s_nationkey         INT             NOT NULL,
         s_phone             CHAR(15)        NOT NULL,
         s_acctbal           DECIMAL(12, 2)  NOT NULL,
-        s_comment           VARHAR(101)    NOT NULL
+        s_comment           VARCHAR(101)    NOT NULL
     );
 
---customer/customer.1.parquet
+-- Change the location tpch_sf1 with the location of source files (see the generate data notebook)
 COPY INTO dbo.lineitem_clustered        FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered - COPY INTO');
 COPY INTO dbo.lineitem_clustered_bad    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered_bad - COPY INTO');
-COPY INTO dbo.customer                  FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1//customer/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - customer - COPY INTO');
+COPY INTO dbo.customer                  FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/customer/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - customer - COPY INTO');
 COPY INTO dbo.nation                    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/nation/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - nation - COPY INTO');
 COPY INTO dbo.orders                    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/orders/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - orders - COPY INTO');
 COPY INTO dbo.part                      FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/part/*.parquet'       WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - part - COPY INTO');
