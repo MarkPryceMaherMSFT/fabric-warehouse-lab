@@ -13,6 +13,10 @@
 -- META         {
 -- META           "id": "b9e4f7ae-a6a9-8dcd-4856-d0aa8df7e81a",
 -- META           "type": "Datawarehouse"
+-- META         },
+-- META         {
+-- META           "id": "f582c485-d001-4211-98fe-1dd10fd8b6ac",
+-- META           "type": "Lakewarehouse"
 -- META         }
 -- META       ]
 -- META     }
@@ -258,16 +262,16 @@ CREATE TABLE dbo.supplier
         s_comment           VARCHAR(101)    NOT NULL
     );
 
-
-COPY INTO dbo.lineitem_clustered        FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered - COPY INTO');
-COPY INTO dbo.lineitem_clustered_bad    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered_bad - COPY INTO');
-COPY INTO dbo.customer                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/customer/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - customer - COPY INTO');
-COPY INTO dbo.nation                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/nation/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - nation - COPY INTO');
-COPY INTO dbo.orders                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/orders/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - orders - COPY INTO');
-COPY INTO dbo.part                      FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/part/*.parquet'       WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - part - COPY INTO');
-COPY INTO dbo.partsupp                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/partsupp/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - partsupp - COPY INTO');
-COPY INTO dbo.region                    FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/region/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - region - COPY INTO');
-COPY INTO dbo.supplier                  FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/supplier/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - supplier - COPY INTO');
+--customer/customer.1.parquet
+COPY INTO dbo.lineitem_clustered        FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered - COPY INTO');
+COPY INTO dbo.lineitem_clustered_bad    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem_clustered_bad - COPY INTO');
+COPY INTO dbo.customer                  FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1//customer/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - customer - COPY INTO');
+COPY INTO dbo.nation                    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/nation/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - nation - COPY INTO');
+COPY INTO dbo.orders                    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/orders/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - orders - COPY INTO');
+COPY INTO dbo.part                      FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/part/*.parquet'       WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - part - COPY INTO');
+COPY INTO dbo.partsupp                  FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/partsupp/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - partsupp - COPY INTO');
+COPY INTO dbo.region                    FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/region/*.parquet'     WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - region - COPY INTO');
+COPY INTO dbo.supplier                  FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/supplier/*.parquet'   WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - supplier - COPY INTO');
 
 
 select top 10
@@ -338,7 +342,7 @@ BEGIN
         avg(l_discount) as avg_disc,
     count_big(*) as count_order /* count(*) as count_order */
     from
-        MyLakehouse.dbo.[lineitem_100_000010000]
+        dbo.[lineitem]
     where
         l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
     group by
@@ -360,7 +364,7 @@ BEGIN
         avg(l_discount) as avg_disc,
     count_big(*) as count_order /* count(*) as count_order */
     from
-        MyLakehouse.dbo.[lineitem_100_000050000]
+        dbo.[lineitem]
     where
         l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
     group by
@@ -382,7 +386,7 @@ BEGIN
         avg(l_discount) as avg_disc,
     count_big(*) as count_order /* count(*) as count_order */
     from
-        MyLakehouse.dbo.[lineitem_100_002000000]
+        dbo.[lineitem]
     where
         l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
     group by
@@ -404,7 +408,7 @@ BEGIN
         avg(l_discount) as avg_disc,
     count_big(*) as count_order /* count(*) as count_order */
     from
-        MyLakehouse.dbo.[lineitem_100_010000000]
+        dbo.[lineitem]
     where
         l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
     group by
@@ -426,7 +430,7 @@ BEGIN
         avg(l_discount) as avg_disc,
     count_big(*) as count_order /* count(*) as count_order */
     from
-        MyLakehouse.dbo.[lineitem_100_default]
+        dbo.[lineitem]
     where
         l_shipdate <=  dateadd(day, -88, '1998-12-01') /*  l_shipdate <= date '1998-12-01' - interval '88' day (3)  */
     group by
@@ -447,6 +451,33 @@ END
 -- META   "language_group": "sqldatawarehouse"
 -- META }
 
+-- CELL ********************
+
+SELECT TOP (100) [l_orderkey],
+			[l_partkey],
+			[l_suppkey],
+			[l_linenumber],
+			[l_quantity],
+			[l_extendedprice],
+			[l_discount],
+			[l_tax],
+			[l_returnflag],
+			[l_linestatus],
+			[l_shipdate],
+			[l_commitdate],
+			[l_receiptdate],
+			[l_shipinstruct],
+			[l_shipmode],
+			[l_comment]
+FROM [demowarehouse].[dbo].[lineitem]
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "sql",
+-- META   "language_group": "sqldatawarehouse"
+-- META }
+
 -- MARKDOWN ********************
 
 -- # 🚚 Data ingestion
@@ -454,7 +485,7 @@ END
 -- CELL ********************
 
 TRUNCATE TABLE dbo.lineitem;
-COPY INTO dbo.lineitem FROM 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet' WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem - COPY INTO');
+COPY INTO dbo.lineitem FROM 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet' WITH (FILE_TYPE = 'PARQUET') OPTION (LABEL = 'Load - lineitem - COPY INTO');
 
 -- METADATA ********************
 
@@ -485,7 +516,7 @@ TRUNCATE TABLE dbo.lineitem_openrowset;
 INSERT INTO dbo.lineitem_openrowset
 SELECT
     *
-FROM OPENROWSET(BULK 'https://scbradlstorage01.dfs.core.windows.net/sampledata/TPC-H/GB_300/Delta_VOrder_Disabled/lineitem/*.parquet')
+FROM OPENROWSET(BULK 'https://onelake.dfs.fabric.microsoft.com/0631bff8-b82c-4800-bc4f-b1f6cd2b9cfc/023336ad-ad68-40ff-b90a-063128753fb0/Files/tpch_sf1/lineitem/*.parquet')
 OPTION (LABEL = 'Load - lineitem - OPENROWSET');
 
 -- METADATA ********************

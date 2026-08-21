@@ -4,8 +4,7 @@
 
 # META {
 # META   "kernel_info": {
-# META     "name": "jupyter",
-# META     "jupyter_kernel_name": "python3.12"
+# META     "name": "synapse_pyspark"
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
@@ -31,7 +30,7 @@
 
 # META {
 # META   "language": "python",
-# META   "language_group": "jupyter_python"
+# META   "language_group": "synapse_pyspark"
 # META }
 
 # CELL ********************
@@ -41,7 +40,7 @@
 from lakebench.datagen import TPCHDataGenerator
 
 datagen = TPCHDataGenerator(
-    scale_factor=300,
+    scale_factor=1,
     target_folder_uri='/lakehouse/default/Files/tpch_sf1'
 )
 datagen.run()
@@ -51,5 +50,5 @@ datagen.run()
 
 # META {
 # META   "language": "python",
-# META   "language_group": "jupyter_python"
+# META   "language_group": "synapse_pyspark"
 # META }

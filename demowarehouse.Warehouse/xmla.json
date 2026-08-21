@@ -13,6 +13,682 @@
     "sourceQueryCulture": "en-US",
     "tables": [
       {
+        "name": "ExecRequestsHistory",
+        "sourceLineageTag": "[dbo].[ExecRequestsHistory]",
+        "columns": [
+          {
+            "name": "Edition",
+            "dataType": "string",
+            "sourceColumn": "Edition",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Edition",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WorkSpaceId",
+            "dataType": "string",
+            "sourceColumn": "WorkSpaceId",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "WorkSpaceId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ArtifactId",
+            "dataType": "string",
+            "sourceColumn": "ArtifactId",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ArtifactId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Query_Time_sec",
+            "dataType": "int64",
+            "sourceColumn": "Query_Time_sec",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "Query_Time_sec",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "distributed_statement_id",
+            "sourceColumn": "distributed_statement_id",
+            "sourceProviderType": "uniqueidentifier",
+            "sourceLineageTag": "distributed_statement_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "database_name",
+            "dataType": "string",
+            "sourceColumn": "database_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "database_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "submit_time",
+            "dataType": "dateTime",
+            "sourceColumn": "submit_time",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "submit_time",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "start_time",
+            "dataType": "dateTime",
+            "sourceColumn": "start_time",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "start_time",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "end_time",
+            "dataType": "dateTime",
+            "sourceColumn": "end_time",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "end_time",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "is_distributed",
+            "dataType": "int64",
+            "sourceColumn": "is_distributed",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "is_distributed",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "is_accelerated",
+            "dataType": "int64",
+            "sourceColumn": "is_accelerated",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "is_accelerated",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "statement_type",
+            "dataType": "string",
+            "sourceColumn": "statement_type",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "statement_type",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "total_elapsed_time_ms",
+            "dataType": "int64",
+            "sourceColumn": "total_elapsed_time_ms",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "total_elapsed_time_ms",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "login_name",
+            "dataType": "string",
+            "sourceColumn": "login_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "login_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "row_count",
+            "dataType": "int64",
+            "sourceColumn": "row_count",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "row_count",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "session_id",
+            "dataType": "int64",
+            "sourceColumn": "session_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "session_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "connection_id",
+            "sourceColumn": "connection_id",
+            "sourceProviderType": "uniqueidentifier",
+            "sourceLineageTag": "connection_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "program_name",
+            "dataType": "string",
+            "sourceColumn": "program_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "program_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "batch_id",
+            "sourceColumn": "batch_id",
+            "sourceProviderType": "uniqueidentifier",
+            "sourceLineageTag": "batch_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "root_batch_id",
+            "sourceColumn": "root_batch_id",
+            "sourceProviderType": "uniqueidentifier",
+            "sourceLineageTag": "root_batch_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "query_hash",
+            "dataType": "string",
+            "sourceColumn": "query_hash",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "query_hash",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "dataType": "string",
+            "sourceColumn": "label",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "label",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "result_cache_hit",
+            "dataType": "int64",
+            "sourceColumn": "result_cache_hit",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "result_cache_hit",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sql_pool_name",
+            "dataType": "string",
+            "sourceColumn": "sql_pool_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "sql_pool_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "error_code",
+            "dataType": "int64",
+            "sourceColumn": "error_code",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "error_code",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "error_severity",
+            "dataType": "int64",
+            "sourceColumn": "error_severity",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "error_severity",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "error_state",
+            "dataType": "int64",
+            "sourceColumn": "error_state",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "error_state",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "allocated_cpu_time_ms",
+            "dataType": "int64",
+            "sourceColumn": "allocated_cpu_time_ms",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "allocated_cpu_time_ms",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "data_scanned_remote_storage_mb",
+            "dataType": "double",
+            "sourceColumn": "data_scanned_remote_storage_mb",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "data_scanned_remote_storage_mb",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "data_scanned_memory_mb",
+            "dataType": "double",
+            "sourceColumn": "data_scanned_memory_mb",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "data_scanned_memory_mb",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "data_scanned_disk_mb",
+            "dataType": "double",
+            "sourceColumn": "data_scanned_disk_mb",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "data_scanned_disk_mb",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "is_using_external_api",
+            "dataType": "int64",
+            "sourceColumn": "is_using_external_api",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "is_using_external_api",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "command",
+            "dataType": "string",
+            "sourceColumn": "command",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "command",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ExecRequestsHistory",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "QueryOptimizationInsights",
+        "sourceLineageTag": "[dbo].[QueryOptimizationInsights]",
+        "columns": [
+          {
+            "name": "query_hash",
+            "dataType": "string",
+            "sourceColumn": "query_hash",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "query_hash",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sample_command",
+            "dataType": "string",
+            "sourceColumn": "sample_command",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "sample_command",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "number_of_runs",
+            "dataType": "int64",
+            "sourceColumn": "number_of_runs",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "number_of_runs",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "avg_total_elapsed_ms",
+            "dataType": "int64",
+            "sourceColumn": "avg_total_elapsed_ms",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "avg_total_elapsed_ms",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "issues",
+            "dataType": "string",
+            "sourceColumn": "issues",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "issues",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "new_query",
+            "dataType": "string",
+            "sourceColumn": "new_query",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "new_query",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "predicate_columns",
+            "dataType": "string",
+            "sourceColumn": "predicate_columns",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "predicate_columns",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "tables_used",
+            "dataType": "string",
+            "sourceColumn": "tables_used",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "tables_used",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "analyzed_at",
+            "dataType": "dateTime",
+            "sourceColumn": "analyzed_at",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "analyzed_at",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "QueryOptimizationInsights",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "customer",
         "sourceLineageTag": "[dbo].[customer]",
         "columns": [
@@ -138,6 +814,558 @@
             "source": {
               "type": "entity",
               "entityName": "customer",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "customer_10000000",
+        "sourceLineageTag": "[dbo].[customer_10000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "customer_10000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "customer_20000000",
+        "sourceLineageTag": "[dbo].[customer_20000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "customer_20000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "customer_30000000",
+        "sourceLineageTag": "[dbo].[customer_30000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "customer_30000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "customer_6000000",
+        "sourceLineageTag": "[dbo].[customer_6000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "customer_6000000",
               "expressionSource": "DatabaseQuery",
               "schemaName": "dbo"
             }
@@ -1681,6 +2909,130 @@
         ]
       },
       {
+        "name": "loadtest_1000000",
+        "sourceLineageTag": "[dbo].[loadtest_1000000]",
+        "columns": [
+          {
+            "name": "s_suppkey",
+            "dataType": "int64",
+            "sourceColumn": "s_suppkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "s_suppkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "s_name",
+            "dataType": "string",
+            "sourceColumn": "s_name",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "s_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "s_address",
+            "dataType": "string",
+            "sourceColumn": "s_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "s_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "s_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "s_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "s_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "s_phone",
+            "dataType": "string",
+            "sourceColumn": "s_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "s_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "s_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "s_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "s_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "s_comment",
+            "dataType": "string",
+            "sourceColumn": "s_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "s_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "loadtest_1000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "nation",
         "sourceLineageTag": "[dbo].[nation]",
         "columns": [
@@ -2344,6 +3696,998 @@
             "source": {
               "type": "entity",
               "entityName": "supplier",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_customer_10000000",
+        "sourceLineageTag": "[dbo].[temp_customer_10000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_customer_10000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_customer_5000000",
+        "sourceLineageTag": "[dbo].[temp_customer_5000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_customer_5000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_customer_6000000",
+        "sourceLineageTag": "[dbo].[temp_customer_6000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_customer_6000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_customer_7000000",
+        "sourceLineageTag": "[dbo].[temp_customer_7000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_customer_7000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_customer_8000000",
+        "sourceLineageTag": "[dbo].[temp_customer_8000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_customer_8000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_customer_9000000",
+        "sourceLineageTag": "[dbo].[temp_customer_9000000]",
+        "columns": [
+          {
+            "name": "c_custkey",
+            "dataType": "int64",
+            "sourceColumn": "c_custkey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "c_custkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_name",
+            "dataType": "string",
+            "sourceColumn": "c_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_address",
+            "dataType": "string",
+            "sourceColumn": "c_address",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_address",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "c_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_phone",
+            "dataType": "string",
+            "sourceColumn": "c_phone",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_phone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_acctbal",
+            "dataType": "decimal",
+            "sourceColumn": "c_acctbal",
+            "sourceProviderType": "decimal",
+            "sourceLineageTag": "c_acctbal",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_mktsegment",
+            "dataType": "string",
+            "sourceColumn": "c_mktsegment",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "c_mktsegment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c_comment",
+            "dataType": "string",
+            "sourceColumn": "c_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "c_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_customer_9000000",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_download_nation_0f802d0d",
+        "sourceLineageTag": "[dbo].[temp_download_nation_0f802d0d]",
+        "columns": [
+          {
+            "name": "n_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "n_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "n_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "n_name",
+            "dataType": "string",
+            "sourceColumn": "n_name",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "n_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "n_regionkey",
+            "dataType": "int64",
+            "sourceColumn": "n_regionkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "n_regionkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "n_comment",
+            "dataType": "string",
+            "sourceColumn": "n_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "n_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_download_nation_0f802d0d",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "temp_download_nation_498abc81",
+        "sourceLineageTag": "[dbo].[temp_download_nation_498abc81]",
+        "columns": [
+          {
+            "name": "n_nationkey",
+            "dataType": "int64",
+            "sourceColumn": "n_nationkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "n_nationkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "n_name",
+            "dataType": "string",
+            "sourceColumn": "n_name",
+            "sourceProviderType": "char",
+            "sourceLineageTag": "n_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "n_regionkey",
+            "dataType": "int64",
+            "sourceColumn": "n_regionkey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "n_regionkey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "n_comment",
+            "dataType": "string",
+            "sourceColumn": "n_comment",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "n_comment",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "temp_download_nation_498abc81",
               "expressionSource": "DatabaseQuery",
               "schemaName": "dbo"
             }
