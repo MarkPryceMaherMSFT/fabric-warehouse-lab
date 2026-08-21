@@ -23,7 +23,27 @@
 # CELL ********************
 
 # Install LakeBench and its optional extras
-!pip install lakebench[tpch_datagen]==1.2.0
+!pip install lakebench[tpch_datagen,tpcds_datagen]==1.2.0
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Generate TPC-H data into the attached Lakehouse's Files area
+
+from lakebench.datagen import TPCHDataGenerator
+
+datagen = TPCHDataGenerator(
+    scale_factor=1,
+    target_folder_uri='/lakehouse/default/Files/tpch_sf1'
+)
+datagen.run()
 
 
 # METADATA ********************
@@ -37,11 +57,11 @@
 
 # Generate TPC-DS data into the attached Lakehouse's Files area
 
-from lakebench.datagen import TPCHDataGenerator
+from lakebench.datagen import TPCDSDataGenerator
 
-datagen = TPCHDataGenerator(
+datagen = TPCDSDataGenerator(
     scale_factor=1,
-    target_folder_uri='/lakehouse/default/Files/tpch_sf1'
+    target_folder_uri='/lakehouse/default/Files/tpcds_sf1'
 )
 datagen.run()
 
