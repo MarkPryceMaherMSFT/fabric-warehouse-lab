@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "tpc-h performance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "85b91cb8-2b5f-aa5f-46ba-0e6fc130a285"
+  }
+}

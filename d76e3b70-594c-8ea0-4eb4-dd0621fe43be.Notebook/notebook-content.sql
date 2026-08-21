@@ -259,7 +259,7 @@ CREATE TABLE dbo.supplier
         s_nationkey         INT             NOT NULL,
         s_phone             CHAR(15)        NOT NULL,
         s_acctbal           DECIMAL(12, 2)  NOT NULL,
-        s_comment           VARCHAR(101)    NOT NULL
+        s_comment           VARHAR(101)    NOT NULL
     );
 
 --customer/customer.1.parquet
